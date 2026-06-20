@@ -7,13 +7,14 @@ function actualizarGuiones() {
     // 2. Revisar qué tipo de cuenta está seleccionada en el Switch
     const tipoCuenta = document.querySelector('input[name="tipoCuenta"]:checked').value;
 
-    // 3. Determinar la hora del día
+    // 3. Determinar la hora del día con la gramática correcta
     const horaActual = new Date().getHours();
-    let saludoTemporal = "tardes";
+    let saludoCompleto = "Buenas tardes"; // Valor por defecto
+    
     if (horaActual >= 20 || horaActual < 5) {
-        saludoTemporal = "noches";
+        saludoCompleto = "Buenas noches";
     } else if (horaActual < 12) {
-        saludoTemporal = "días";
+        saludoCompleto = "Buenos días";
     }
 
     // 4. Detectar si el contacto es Correo o Número
@@ -44,7 +45,7 @@ function actualizarGuiones() {
         tituloFinal = "CON CUENTA LLAVE";
         scriptFinal = `1. Saludo e Identificación inicial
 
-Buenas ${saludoTemporal}. 
+${saludoCompleto}. 
 Me comunico de *0311 Locatel, Mi nombre es José Granados. ¿Tengo el gusto de comunicarme con ${nombreSol}?
 
 2. Motivo de la llamada y Explicación del problema
@@ -73,13 +74,13 @@ Le agradezco mucho su tiempo de espera. Le informo que el proceso ha concluido d
 ¿Hay alguna otra duda o pregunta en la que le pueda apoyar el día de hoy?
 
 (Si dice que no) 
-Perfecto, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente ${saludoTemporal}.`;
+Perfecto, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente tarde/noche.`;
 
     } else {
         tituloFinal = "SIN CUENTA LLAVE";
         scriptFinal = `1. Saludo e Identificación inicial
 
-Buenos ${saludoTemporal}. 
+${saludoCompleto}. 
 Me comunico de *0311 Locatel, Mi nombre es José Granados. ¿Tengo el gusto de comunicarme con ${nombreSol}?
 
 2. Motivo de la llamada y Explicación del problema
@@ -110,7 +111,7 @@ A partir de este momento, usted ya puede ingresar nuevamente a la página web y 
 ¿Hay alguna otra duda o pregunta en la que le pueda apoyar el día de hoy?
 
 (Si responde que no) 
-Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente ${saludoTemporal}.`;
+Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente tarde/noche.`;
     }
 
     // 7. Inyección del guion en el HTML
@@ -121,8 +122,8 @@ Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. L
 // Agregar Event Listeners a los inputs (textos y botones de radio)
 const inputs = document.querySelectorAll('input');
 inputs.forEach(input => {
-    input.addEventListener('input', actualizarGuiones); // Para cuando escribes
-    input.addEventListener('change', actualizarGuiones); // Para cuando das clic en los botones (Switch)
+    input.addEventListener('input', actualizarGuiones);
+    input.addEventListener('change', actualizarGuiones);
 });
 
 // Llamada inicial
