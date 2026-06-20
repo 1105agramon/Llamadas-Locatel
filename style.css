@@ -39,6 +39,34 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Estilos para el Switch / Pestañas */
+.cuenta-selector {
+    display: flex;
+    margin-bottom: 25px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cuenta-selector input[type="radio"] {
+    display: none;
+}
+
+.cuenta-selector label {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cuenta-selector input[type="radio"]:checked + label {
+    background-color: #004d40;
+    color: white;
+}
+
 h2 {
     color: #004d40;
     margin-bottom: 15px;
@@ -58,7 +86,7 @@ h2 {
     font-size: 0.9rem;
 }
 
-.input-group input {
+.input-group input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -66,7 +94,7 @@ h2 {
     font-size: 1rem;
 }
 
-.input-group input:focus {
+.input-group input[type="text"]:focus {
     outline: none;
     border-color: #004d40;
     box-shadow: 0 0 5px rgba(0, 77, 64, 0.3);
@@ -76,7 +104,6 @@ h2 {
     background-color: #fafafa;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    margin-bottom: 20px;
     overflow: hidden;
 }
 
