@@ -1,3 +1,15 @@
+:root {
+    /* Paleta de colores oscuros pasteles */
+    --bg-main: #1a1b26;        /* Fondo principal oscuro mate */
+    --bg-panel: #24283b;       /* Fondo de las tarjetas/paneles */
+    --bg-input: #16161e;       /* Fondo de las cajas de texto */
+    --accent-pastel: #567b79;  /* Verde/Teal pastel oscuro (Acento principal) */
+    --accent-hover: #456260;   /* Tono más oscuro para hovers */
+    --text-primary: #a9b1d6;   /* Texto principal (Gris azulado suave) */
+    --text-title: #7dcfff;     /* Azul pastel para títulos */
+    --border-soft: #414868;    /* Bordes sutiles */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,8 +18,8 @@
 }
 
 body {
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     line-height: 1.6;
 }
 
@@ -18,12 +30,13 @@ body {
 }
 
 header {
-    background-color: #004d40;
-    color: white;
+    background-color: var(--accent-pastel);
+    color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .grid {
@@ -33,19 +46,20 @@ header {
 }
 
 .form-section, .output-section {
-    background: white;
+    background: var(--bg-panel);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 /* Estilos para el Switch / Pestañas */
 .cuenta-selector {
     display: flex;
     margin-bottom: 25px;
-    background-color: #e0e0e0;
+    background-color: var(--bg-input);
     border-radius: 8px;
     overflow: hidden;
+    border: 1px solid var(--border-soft);
 }
 
 .cuenta-selector input[type="radio"] {
@@ -58,20 +72,20 @@ header {
     padding: 12px;
     cursor: pointer;
     font-weight: bold;
-    color: #555;
+    color: #565f89; /* Tono apagado para el inactivo */
     transition: background 0.3s, color 0.3s;
 }
 
 .cuenta-selector input[type="radio"]:checked + label {
-    background-color: #004d40;
-    color: white;
+    background-color: var(--accent-pastel);
+    color: #ffffff;
 }
 
 h2 {
-    color: #004d40;
+    color: var(--accent-pastel);
     margin-bottom: 15px;
     font-size: 1.2rem;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--border-soft);
     padding-bottom: 5px;
 }
 
@@ -84,48 +98,59 @@ h2 {
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 0.9rem;
+    color: #c0caf5; /* Gris clarito para los labels */
 }
 
 .input-group input[type="text"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-soft);
     border-radius: 4px;
     font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Cambiar el color del placeholder para que no brille tanto */
+.input-group input[type="text"]::placeholder {
+    color: #565f89;
 }
 
 .input-group input[type="text"]:focus {
     outline: none;
-    border-color: #004d40;
-    box-shadow: 0 0 5px rgba(0, 77, 64, 0.3);
+    border-color: var(--accent-pastel);
+    box-shadow: 0 0 8px rgba(86, 123, 121, 0.4); /* Resplandor acorde al color pastel */
 }
 
 .script-card {
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-soft);
     border-radius: 8px;
     overflow: hidden;
 }
 
 .card-header {
-    background-color: #e0f2f1;
+    background-color: var(--bg-panel);
     padding: 10px 15px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .card-header h3 {
-    color: #00695c;
+    color: var(--text-title);
     font-size: 1rem;
     margin: 0;
+    letter-spacing: 0.5px; /* Un poco de espacio para que se vea más pro */
 }
 
 .script-content {
     padding: 15px;
     white-space: pre-wrap;
     font-size: 0.95rem;
-    color: #2c3e50;
+    color: #c0caf5; /* Texto del guion un poco más claro para leer fácil */
+    line-height: 1.8;
 }
 
 @media (max-width: 768px) {
