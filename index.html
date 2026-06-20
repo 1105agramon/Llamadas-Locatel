@@ -14,14 +14,19 @@
 
         <div class="grid">
             <section class="form-section">
+                
+                <div class="cuenta-selector">
+                    <input type="radio" id="conLlave" name="tipoCuenta" value="con" checked>
+                    <label for="conLlave">CON Cuenta Llave</label>
+                    
+                    <input type="radio" id="sinLlave" name="tipoCuenta" value="sin">
+                    <label for="sinLlave">SIN Cuenta Llave</label>
+                </div>
+
                 <h2>Datos del Solicitante</h2>
                 <div class="input-group">
                     <label for="nombreSol">Nombre completo:</label>
                     <input type="text" id="nombreSol" placeholder="Ej. Juan Pérez">
-                </div>
-                <div class="input-group">
-                    <label for="curpSol">CURP:</label>
-                    <input type="text" id="curpSol" placeholder="Ingrese CURP">
                 </div>
                 <div class="input-group">
                     <label for="contactoSol">Número de celular o Correo:</label>
@@ -33,27 +38,16 @@
                     <label for="nombreTer">Nombre completo (Tercero):</label>
                     <input type="text" id="nombreTer" placeholder="Ej. María López">
                 </div>
-                <div class="input-group">
-                    <label for="curpTer">CURP (Tercero):</label>
-                    <input type="text" id="curpTer" placeholder="Ingrese CURP del tercero">
-                </div>
             </section>
 
             <section class="output-section">
-                <h2>Guiones Generados</h2>
+                <h2>Guion Generado</h2>
                 
                 <div class="script-card">
                     <div class="card-header">
-                        <h3>CON CUENTA LLAVE</h3>
+                        <h3 id="scriptTitulo">CON CUENTA LLAVE</h3>
                     </div>
-                    <div id="outputCon" class="script-content"></div>
-                </div>
-
-                <div class="script-card">
-                    <div class="card-header">
-                        <h3>SIN CUENTA LLAVE</h3>
-                    </div>
-                    <div id="outputSin" class="script-content"></div>
+                    <div id="outputScript" class="script-content"></div>
                 </div>
             </section>
         </div>
