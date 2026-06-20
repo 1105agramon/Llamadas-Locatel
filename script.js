@@ -1,8 +1,13 @@
 function actualizarGuiones() {
+    // 1. Captura de valores (sin CURP)
     const nombreSol = document.getElementById('nombreSol').value.trim() || "[Nombre de la persona]";
     const contactoSol = document.getElementById('contactoSol').value.trim();
     const nombreTer = document.getElementById('nombreTer').value.trim() || "[Nombre de la cuenta del tercero]";
+    
+    // 2. Revisar qué tipo de cuenta está seleccionada en el Switch
+    const tipoCuenta = document.querySelector('input[name="tipoCuenta"]:checked').value;
 
+    // 3. Determinar la hora del día
     const horaActual = new Date().getHours();
     let saludoTemporal = "tardes";
     if (horaActual >= 20 || horaActual < 5) {
@@ -11,6 +16,7 @@ function actualizarGuiones() {
         saludoTemporal = "días";
     }
 
+    // 4. Detectar si el contacto es Correo o Número
     const esCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactoSol);
     
     let tipoContacto, tipoContactoRef, tipoContactoCorto;
@@ -29,7 +35,14 @@ function actualizarGuiones() {
         tipoContactoCorto = "número";
     }
 
-    const scriptConLlave = `1. Saludo e Identificación inicial
+    // 5. Variables para guardar el título y el texto final
+    let tituloFinal = "";
+    let scriptFinal = "";
+
+    // 6. Construcción lógica según la selección
+    if (tipoCuenta === "con") {
+        tituloFinal = "CON CUENTA LLAVE";
+        scriptFinal = `1. Saludo e Identificación inicial
 
 Buenas ${saludoTemporal}. 
 Me comunico de *0311 Locatel, Mi nombre es José Granados. ¿Tengo el gusto de comunicarme con ${nombreSol}?
@@ -62,7 +75,9 @@ Le agradezco mucho su tiempo de espera. Le informo que el proceso ha concluido d
 (Si dice que no) 
 Perfecto, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente ${saludoTemporal}.`;
 
-    const scriptSinLlave = `1. Saludo e Identificación inicial
+    } else {
+        tituloFinal = "SIN CUENTA LLAVE";
+        scriptFinal = `1. Saludo e Identificación inicial
 
 Buenos ${saludoTemporal}. 
 Me comunico de *0311 Locatel, Mi nombre es José Granados. ¿Tengo el gusto de comunicarme con ${nombreSol}?
@@ -96,14 +111,19 @@ A partir de este momento, usted ya puede ingresar nuevamente a la página web y 
 
 (Si responde que no) 
 Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente ${saludoTemporal}.`;
+    }
 
-    document.getElementById('outputCon').innerText = scriptConLlave;
-    document.getElementById('outputSin').innerText = scriptSinLlave;
+    // 7. Inyección del guion en el HTML
+    document.getElementById('scriptTitulo').innerText = tituloFinal;
+    document.getElementById('outputScript').innerText = scriptFinal;
 }
 
+// Agregar Event Listeners a los inputs (textos y botones de radio)
 const inputs = document.querySelectorAll('input');
 inputs.forEach(input => {
-    input.addEventListener('input', actualizarGuiones);
+    input.addEventListener('input', actualizarGuiones); // Para cuando escribes
+    input.addEventListener('change', actualizarGuiones); // Para cuando das clic en los botones (Switch)
 });
 
+// Llamada inicial
 actualizarGuiones();
