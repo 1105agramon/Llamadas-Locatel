@@ -1,11 +1,8 @@
-// Función principal que actualiza los textos
 function actualizarGuiones() {
-    // 1. Captura de valores del formulario
     const nombreSol = document.getElementById('nombreSol').value.trim() || "[Nombre de la persona]";
     const contactoSol = document.getElementById('contactoSol').value.trim();
     const nombreTer = document.getElementById('nombreTer').value.trim() || "[Nombre de la cuenta del tercero]";
 
-    // 2. Determinar la hora del día (Días, tardes o noches)
     const horaActual = new Date().getHours();
     let saludoTemporal = "tardes";
     if (horaActual >= 20 || horaActual < 5) {
@@ -14,8 +11,6 @@ function actualizarGuiones() {
         saludoTemporal = "días";
     }
 
-    // 3. Detectar si el contacto es Correo o Número y ajustar la redacción
-    // Expresión regular básica para detectar formato de correo electrónico
     const esCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactoSol);
     
     let tipoContacto, tipoContactoRef, tipoContactoCorto;
@@ -34,7 +29,6 @@ function actualizarGuiones() {
         tipoContactoCorto = "número";
     }
 
-    // 4. Construcción del guion: CON CUENTA LLAVE
     const scriptConLlave = `1. Saludo e Identificación inicial
 
 Buenas ${saludoTemporal}. 
@@ -68,8 +62,6 @@ Le agradezco mucho su tiempo de espera. Le informo que el proceso ha concluido d
 (Si dice que no) 
 Perfecto, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente ${saludoTemporal}.`;
 
-
-    // 5. Construcción del guion: SIN CUENTA LLAVE
     const scriptSinLlave = `1. Saludo e Identificación inicial
 
 Buenos ${saludoTemporal}. 
@@ -105,27 +97,13 @@ A partir de este momento, usted ya puede ingresar nuevamente a la página web y 
 (Si responde que no) 
 Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió José Granados, operador de Locatel. Que tenga una excelente ${saludoTemporal}.`;
 
-    // 6. Inyección de los guiones en el HTML
     document.getElementById('outputCon').innerText = scriptConLlave;
     document.getElementById('outputSin').innerText = scriptSinLlave;
 }
 
-// Función para copiar al portapapeles rápidamente
-function copiarTexto(idElemento) {
-    const texto = document.getElementById(idElemento).innerText;
-    navigator.clipboard.writeText(texto).then(() => {
-        // Opcional: una pequeña alerta visual para confirmar
-        alert("¡Guion copiado al portapapeles!");
-    }).catch(err => {
-        console.error('Error al copiar: ', err);
-    });
-}
-
-// Agregar Event Listeners a los inputs para que se actualice en tiempo real al escribir
 const inputs = document.querySelectorAll('input');
 inputs.forEach(input => {
     input.addEventListener('input', actualizarGuiones);
 });
 
-// Llamada inicial para cargar los textos por defecto al abrir la página
 actualizarGuiones();
