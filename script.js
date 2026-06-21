@@ -19,6 +19,7 @@ async function verificarSesion() {
                 headers: {
                     "Content-Type": "text/plain;charset=utf-8",
                 },
+                redirect: "follow", // <-- AGREGADO: Vital para evitar el bloqueo CORS de Google
                 body: JSON.stringify({ action: "validarToken", token: tokenGuardado })
             });
             const data = await response.json();
@@ -51,6 +52,7 @@ btnLogin.addEventListener('click', async () => {
             headers: {
                 "Content-Type": "text/plain;charset=utf-8",
             },
+            redirect: "follow", // <-- AGREGADO: Vital para evitar el bloqueo CORS de Google
             body: JSON.stringify({ action: "login", usuario: usuario, password: password })
         });
         const data = await response.json();
