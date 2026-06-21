@@ -1,5 +1,5 @@
 // PON AQUÍ LA NUEVA URL QUE TE DIO GOOGLE APPS SCRIPT
-const URL_API = "https://script.google.com/macros/s/AKfycbwQUY-C6bfyIhUTn7Nx3UVCQCeQ8NjPAZCTC75AAb5q0WaK53PaaahyFqjJzluCyRpR/exec"; 
+const URL_API = "https://script.google.com/macros/s/AKfycbzlcB0-X0ngWyvyioX-j8sk9_AXQWbN15dpRJWjCUWjodUjELFLJxtal6E4aqa_Xy9w/exec"; 
 
 const loginScreen = document.getElementById('loginScreen');
 const appScreen = document.getElementById('appScreen');
