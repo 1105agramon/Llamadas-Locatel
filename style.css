@@ -2,14 +2,14 @@
    1. VARIABLES Y COLORES
    ========================================= */
 :root {
-    --bg-main: #1a1b26;        /* Fondo principal oscuro mate */
-    --bg-panel: #24283b;       /* Fondo de las tarjetas/paneles */
-    --bg-input: #16161e;       /* Fondo de las cajas de texto */
-    --accent-pastel: #567b79;  /* Verde/Teal pastel oscuro (Acento principal) */
-    --accent-hover: #456260;   /* Tono más oscuro para hovers */
-    --text-primary: #a9b1d6;   /* Texto principal (Gris azulado suave) */
-    --text-title: #7dcfff;     /* Azul pastel para títulos */
-    --border-soft: #414868;    /* Bordes sutiles */
+    --bg-main: #1a1b26;        
+    --bg-panel: #24283b;       
+    --bg-input: #16161e;       
+    --accent-pastel: #567b79;  
+    --accent-hover: #456260;   
+    --text-primary: #a9b1d6;   
+    --text-title: #7dcfff;     
+    --border-soft: #414868;    
 }
 
 /* =========================================
@@ -90,7 +90,6 @@ header {
     color: #c0caf5; 
 }
 
-/* Unificamos estilos para text y password */
 .input-group input {
     width: 100%;
     padding: 10px;
@@ -239,7 +238,7 @@ header {
 .login-card h2 {
     text-align: center;
     margin-bottom: 20px;
-    border-bottom: none; /* Quitamos la línea inferior solo en el título del login */
+    border-bottom: none; 
 }
 
 /* =========================================
