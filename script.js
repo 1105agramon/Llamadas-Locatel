@@ -1,5 +1,5 @@
 // TU NUEVA URL DE GOOGLE APPS SCRIPT
-const URL_API = "https://script.google.com/macros/s/AKfycbzYJzu-DwoWbBMMNTnMRwrIGx2thFrvSA1Jl6dbp0OPHliKhf17bXa5raedc_Jp8J0tNg/exec";
+const URL_API = "https://script.google.com/macros/s/AKfycby9RjEXd-lw3nBeHsKdmBIrPrHSV0pu-Zqp5Nw8ZHAN7a3O1haNOgzqaeFwIre7_nwTqw/exec";
 
 // Elementos de la interfaz para control de pantallas
 const loginScreen = document.getElementById('loginScreen');
