@@ -1,5 +1,7 @@
+/* =========================================
+   1. VARIABLES Y COLORES
+   ========================================= */
 :root {
-    /* Paleta de colores oscuros pasteles */
     --bg-main: #1a1b26;        /* Fondo principal oscuro mate */
     --bg-panel: #24283b;       /* Fondo de las tarjetas/paneles */
     --bg-input: #16161e;       /* Fondo de las cajas de texto */
@@ -10,6 +12,9 @@
     --border-soft: #414868;    /* Bordes sutiles */
 }
 
+/* =========================================
+   2. ESTILOS GENERALES
+   ========================================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,10 +28,27 @@ body {
     line-height: 1.6;
 }
 
+h2 {
+    color: var(--accent-pastel);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--border-soft);
+    padding-bottom: 5px;
+}
+
+/* =========================================
+   3. LAYOUT PRINCIPAL
+   ========================================= */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
 }
 
 header {
@@ -39,20 +61,60 @@ header {
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.form-section, .output-section {
+.form-section, 
+.output-section {
     background: var(--bg-panel);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Estilos para el Switch / Pestañas */
+/* =========================================
+   4. FORMULARIOS E INPUTS
+   ========================================= */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #c0caf5; 
+}
+
+/* Unificamos estilos para text y password */
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #565f89;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-pastel);
+    box-shadow: 0 0 8px rgba(86, 123, 121, 0.4); 
+}
+
+/* =========================================
+   5. SWITCH / PESTAÑAS
+   ========================================= */
 .cuenta-selector {
     display: flex;
     margin-bottom: 25px;
@@ -72,7 +134,7 @@ header {
     padding: 12px;
     cursor: pointer;
     font-weight: bold;
-    color: #565f89; /* Tono apagado para el inactivo */
+    color: #565f89; 
     transition: background 0.3s, color 0.3s;
 }
 
@@ -81,48 +143,9 @@ header {
     color: #ffffff;
 }
 
-h2 {
-    color: var(--accent-pastel);
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    border-bottom: 2px solid var(--border-soft);
-    padding-bottom: 5px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #c0caf5; /* Gris clarito para los labels */
-}
-
-.input-group input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--bg-input);
-    color: var(--text-primary);
-    border: 1px solid var(--border-soft);
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Cambiar el color del placeholder para que no brille tanto */
-.input-group input[type="text"]::placeholder {
-    color: #565f89;
-}
-
-.input-group input[type="text"]:focus {
-    outline: none;
-    border-color: var(--accent-pastel);
-    box-shadow: 0 0 8px rgba(86, 123, 121, 0.4); /* Resplandor acorde al color pastel */
-}
-
+/* =========================================
+   6. COMPONENTES (BOTONES, TARJETAS, ERRORES)
+   ========================================= */
 .script-card {
     background-color: var(--bg-input);
     border: 1px solid var(--border-soft);
@@ -142,48 +165,15 @@ h2 {
     color: var(--text-title);
     font-size: 1rem;
     margin: 0;
-    letter-spacing: 0.5px; /* Un poco de espacio para que se vea más pro */
+    letter-spacing: 0.5px;
 }
 
 .script-content {
     padding: 15px;
     white-space: pre-wrap;
     font-size: 0.95rem;
-    color: #c0caf5; /* Texto del guion un poco más claro para leer fácil */
+    color: #c0caf5; 
     line-height: 1.8;
-}
-
-/* Estilos para el Login */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: var(--bg-main);
-}
-
-.login-card {
-    background: var(--bg-panel);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    width: 100%;
-    max-width: 400px;
-}
-
-.login-card h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.input-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--bg-input);
-    color: var(--text-primary);
-    border: 1px solid var(--border-soft);
-    border-radius: 4px;
-    font-size: 1rem;
 }
 
 .btn-primary {
@@ -204,19 +194,6 @@ h2 {
     background-color: var(--accent-hover);
 }
 
-.error-msg {
-    color: #ff79c6;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .btn-logout {
     background-color: #ff5555;
     color: white;
@@ -225,8 +202,49 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.3s;
 }
 
+.btn-logout:hover {
+    background-color: #ff3333;
+}
+
+.error-msg {
+    color: #ff79c6;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   7. PANTALLA DE LOGIN
+   ========================================= */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+}
+
+.login-card {
+    background: var(--bg-panel);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: none; /* Quitamos la línea inferior solo en el título del login */
+}
+
+/* =========================================
+   8. RESPONSIVIDAD
+   ========================================= */
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
