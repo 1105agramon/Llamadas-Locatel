@@ -1,34 +1,29 @@
-// TU NUEVA URL DE GOOGLE APPS SCRIPT
-const URL_API = "https://script.google.com/macros/s/AKfycbwi8bIQSjEjuvapy2zkYZM4Ee2fx6rqUp9giE8N6t6qSxuRgnLxSolhlLHaazeTcY--/exec";
+// PON AQUÍ LA NUEVA URL QUE TE DIO GOOGLE APPS SCRIPT
+const URL_API = "https://script.google.com/macros/s/AKfycbwQUY-C6bfyIhUTn7Nx3UVCQCeQ8NjPAZCTC75AAb5q0WaK53PaaahyFqjJzluCyRpR/exec"; 
 
-// Elementos de la interfaz para control de pantallas
 const loginScreen = document.getElementById('loginScreen');
 const appScreen = document.getElementById('appScreen');
 const btnLogin = document.getElementById('btnLogin');
 const btnLogout = document.getElementById('btnLogout');
 const loginError = document.getElementById('loginError');
 
-// --- COMPROBACIÓN AUTOMÁTICA DE TOKEN AL CARGAR LA PÁGINA ---
+// --- COMPROBACIÓN AUTOMÁTICA DE TOKEN ---
 async function verificarSesion() {
     const tokenGuardado = localStorage.getItem('session_token');
     
     if (tokenGuardado) {
         try {
-            const response = await fetch(URL_API, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8",
-                },
-                redirect: "follow", // <-- AGREGADO: Vital para evitar el bloqueo CORS de Google
-                body: JSON.stringify({ action: "validarToken", token: tokenGuardado })
-            });
+            // Cambio a método GET (Bala de plata contra CORS)
+            const urlConDatos = `${URL_API}?action=validarToken&token=${encodeURIComponent(tokenGuardado)}`;
+            const response = await fetch(urlConDatos);
             const data = await response.json();
+            
             if (data.success) {
                 mostrarApp();
                 return;
             }
         } catch (e) {
-            console.error("Error validando token remoto", e);
+            console.error("Error validando token", e);
         }
     }
     mostrarLogin();
@@ -47,25 +42,22 @@ btnLogin.addEventListener('click', async () => {
     loginError.innerText = "Verificando...";
     
     try {
-        const response = await fetch(URL_API, {
-            method: "POST",
-            headers: {
-                "Content-Type": "text/plain;charset=utf-8",
-            },
-            redirect: "follow", // <-- AGREGADO: Vital para evitar el bloqueo CORS de Google
-            body: JSON.stringify({ action: "login", usuario: usuario, password: password })
-        });
+        // Cambio a método GET (Bala de plata contra CORS)
+        const urlConDatos = `${URL_API}?action=login&usuario=${encodeURIComponent(usuario)}&password=${encodeURIComponent(password)}`;
+        
+        const response = await fetch(urlConDatos);
         const data = await response.json();
         
         if (data.success) {
             localStorage.setItem('session_token', data.token);
-            localStorage.setItem('operador_nombre', usuario); // Guardamos el nombre para el guion
+            localStorage.setItem('operador_nombre', usuario);
             mostrarApp();
         } else {
-            loginError.innerText = data.message || "Error al iniciar sesión.";
+            loginError.innerText = data.message || "Credenciales incorrectas.";
         }
     } catch (error) {
-        loginError.innerText = "Error de conexión con el servidor.";
+        // Ahora sí te mostrará si hay un error real en pantalla
+        loginError.innerText = "Error de conexión: " + error.message;
         console.error(error);
     }
 });
@@ -145,12 +137,10 @@ function actualizarGuiones() {
     }
 }
 
-// Agregar Event Listeners a los inputs del formulario
 const inputs = document.querySelectorAll('#appScreen input');
 inputs.forEach(input => {
     input.addEventListener('input', actualizarGuiones);
     input.addEventListener('change', actualizarGuiones);
 });
 
-// Inicializar la aplicación comprobando el estado de la sesión
 verificarSesion();
