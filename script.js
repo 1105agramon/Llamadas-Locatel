@@ -1,4 +1,4 @@
-// PON AQUÍ TU URL DE GOOGLE APPS SCRIPT
+// TU NUEVA URL DE GOOGLE APPS SCRIPT
 const URL_API = "https://script.google.com/macros/s/AKfycbzYJzu-DwoWbBMMNTnMRwrIGx2thFrvSA1Jl6dbp0OPHliKhf17bXa5raedc_Jp8J0tNg/exec";
 
 // Elementos de la interfaz para control de pantallas
@@ -16,7 +16,6 @@ async function verificarSesion() {
         try {
             const response = await fetch(URL_API, {
                 method: "POST",
-                // Agregamos este header para evitar el bloqueo CORS
                 headers: {
                     "Content-Type": "text/plain;charset=utf-8",
                 },
@@ -49,7 +48,6 @@ btnLogin.addEventListener('click', async () => {
     try {
         const response = await fetch(URL_API, {
             method: "POST",
-            // Agregamos este header para evitar el bloqueo CORS
             headers: {
                 "Content-Type": "text/plain;charset=utf-8",
             },
@@ -59,7 +57,7 @@ btnLogin.addEventListener('click', async () => {
         
         if (data.success) {
             localStorage.setItem('session_token', data.token);
-            localStorage.setItem('operador_nombre', usuario);
+            localStorage.setItem('operador_nombre', usuario); // Guardamos el nombre para el guion
             mostrarApp();
         } else {
             loginError.innerText = data.message || "Error al iniciar sesión.";
@@ -73,14 +71,14 @@ btnLogin.addEventListener('click', async () => {
 // --- CERRAR SESIÓN ---
 btnLogout.addEventListener('click', () => {
     localStorage.removeItem('session_token');
-    localStorage.removeItem('operador_nombre'); // Limpiamos el nombre al salir
+    localStorage.removeItem('operador_nombre');
     mostrarLogin();
 });
 
 function mostrarApp() {
     loginScreen.style.display = "none";
     appScreen.style.display = "block";
-    actualizarGuiones(); // Carga los textos iniciales ya con tu nombre
+    actualizarGuiones(); 
 }
 
 function mostrarLogin() {
@@ -99,7 +97,6 @@ function actualizarGuiones() {
     
     const tipoCuenta = document.querySelector('input[name="tipoCuenta"]:checked').value;
 
-    // Jalamos el nombre del operador desde el LocalStorage (si no hay, pone uno genérico por si las moscas)
     const nombreOperador = localStorage.getItem('operador_nombre') || "Operador de Locatel";
 
     const horaActual = new Date().getHours();
