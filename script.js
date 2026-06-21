@@ -1,5 +1,5 @@
 // PON AQUÍ TU URL DE GOOGLE APPS SCRIPT
-const URL_API = "https://script.google.com/macros/s/AKfycbyJCTeLr5weTpIQq6m-Iwsjybu-eLeUvJQhGcz4DJjFORJet7dS29GiUPOGEpIOstpYRQ/exec";
+const URL_API = "https://script.google.com/macros/s/AKfycbzYJzu-DwoWbBMMNTnMRwrIGx2thFrvSA1Jl6dbp0OPHliKhf17bXa5raedc_Jp8J0tNg/exec";
 
 // Elementos de la interfaz para control de pantallas
 const loginScreen = document.getElementById('loginScreen');
@@ -16,6 +16,10 @@ async function verificarSesion() {
         try {
             const response = await fetch(URL_API, {
                 method: "POST",
+                // Agregamos este header para evitar el bloqueo CORS
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
                 body: JSON.stringify({ action: "validarToken", token: tokenGuardado })
             });
             const data = await response.json();
@@ -45,14 +49,17 @@ btnLogin.addEventListener('click', async () => {
     try {
         const response = await fetch(URL_API, {
             method: "POST",
+            // Agregamos este header para evitar el bloqueo CORS
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+            },
             body: JSON.stringify({ action: "login", usuario: usuario, password: password })
         });
         const data = await response.json();
         
         if (data.success) {
-            // Guardamos el token Y el nombre del usuario en el navegador
             localStorage.setItem('session_token', data.token);
-            localStorage.setItem('operador_nombre', usuario); // <-- AQUÍ GUARDAMOS EL NOMBRE
+            localStorage.setItem('operador_nombre', usuario);
             mostrarApp();
         } else {
             loginError.innerText = data.message || "Error al iniciar sesión.";
