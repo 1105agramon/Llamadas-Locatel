@@ -250,12 +250,9 @@ header {
     }
 }
 
-/* (Conserva todo tu CSS anterior y agrega esto al final) */
-
 /* =========================================
    9. COLORES DEL GUION (INDICACIONES VS LECTURA)
    ========================================= */
-
 /* Lo que se le lee al ciudadano (color claro/blanco) */
 .text-read {
     color: #e0e4f5;
@@ -268,4 +265,44 @@ header {
     font-style: italic;
     font-weight: 600;
     font-size: 0.95rem;
+}
+
+/* =========================================
+   10. ANIMACIÓN ANTI-OLVIDOS (LOGIN)
+   ========================================= */
+/* Animación de pulso para el texto */
+@keyframes textoAtencion {
+    0% { color: #ff9e64; text-shadow: 0 0 5px rgba(255, 158, 100, 0.5); transform: scale(1); }
+    50% { color: #ff79c6; text-shadow: 0 0 10px rgba(255, 121, 198, 0.8); transform: scale(1.02); }
+    100% { color: #ff9e64; text-shadow: 0 0 5px rgba(255, 158, 100, 0.5); transform: scale(1); }
+}
+
+/* Animación de pulso para los bordes del contenedor */
+@keyframes bordeAtencion {
+    0% { box-shadow: 0 0 5px rgba(255, 158, 100, 0.3); border-color: #ff9e64; }
+    50% { box-shadow: 0 0 15px rgba(255, 121, 198, 0.6); border-color: #ff79c6; }
+    100% { box-shadow: 0 0 5px rgba(255, 158, 100, 0.3); border-color: #ff9e64; }
+}
+
+.gender-group {
+    margin-bottom: 25px;
+}
+
+.gender-group .animated-label {
+    animation: textoAtencion 2s infinite;
+    font-size: 1.05rem;
+    text-align: center;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.gender-selector {
+    animation: bordeAtencion 2s infinite;
+}
+
+/* Color especial para resaltar el botón seleccionado en el login */
+.gender-selector input[type="radio"]:checked + label {
+    background-color: #ff79c6; 
+    color: #1a1b26; /* Letra oscura para que contraste con el fondo brillante */
+    font-weight: 900;
 }
