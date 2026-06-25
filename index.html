@@ -11,6 +11,17 @@
         <div class="login-card">
             <h2>Iniciar Sesión</h2>
             <p id="loginError" class="error-msg"></p>
+            
+            <div class="input-group">
+                <label>Eres:</label>
+                <div class="cuenta-selector">
+                    <input type="radio" id="generoM" name="generoOperador" value="M" checked>
+                    <label for="generoM">Operador</label>
+                    <input type="radio" id="generoF" name="generoOperador" value="F">
+                    <label for="generoF">Operadora</label>
+                </div>
+            </div>
+
             <div class="input-group">
                 <label for="loginUser">Usuario:</label>
                 <input type="text" id="loginUser" placeholder="Tu usuario">
@@ -43,9 +54,13 @@
                     <label for="nombreSol">Nombre completo:</label>
                     <input type="text" id="nombreSol" placeholder="Ej. Juan Pérez">
                 </div>
-                <div class="input-group">
-                    <label for="contactoSol">Número de celular o Correo:</label>
-                    <input type="text" id="contactoSol" placeholder="Ej. 5512345678 o correo@ejemplo.com">
+                
+                <h2>Medio a registrar</h2>
+                <div class="cuenta-selector">
+                    <input type="radio" id="tipoCelular" name="tipoMedio" value="celular" checked>
+                    <label for="tipoCelular">Número de Celular</label>
+                    <input type="radio" id="tipoCorreo" name="tipoMedio" value="correo">
+                    <label for="tipoCorreo">Correo Electrónico</label>
                 </div>
 
                 <h2>Datos de la Tercera Cuenta</h2>
