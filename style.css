@@ -249,3 +249,23 @@ header {
         grid-template-columns: 1fr;
     }
 }
+
+/* (Conserva todo tu CSS anterior y agrega esto al final) */
+
+/* =========================================
+   9. COLORES DEL GUION (INDICACIONES VS LECTURA)
+   ========================================= */
+
+/* Lo que se le lee al ciudadano (color claro/blanco) */
+.text-read {
+    color: #e0e4f5;
+    font-size: 1rem;
+}
+
+/* Indicaciones y acciones para el operador (naranja e itálica) */
+.text-action {
+    color: #ff9e64;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
