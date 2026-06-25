@@ -28,6 +28,19 @@ async function verificarSesion() {
     mostrarLogin();
 }
 
+// --- PERMITIR INGRESO CON LA TECLA ENTER ---
+const inputsLogin = [document.getElementById('loginUser'), document.getElementById('loginPass')];
+
+inputsLogin.forEach(input => {
+    input.addEventListener('keypress', function(event) {
+        // Si la tecla presionada es "Enter"
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evita que se envíe algún formulario por defecto
+            btnLogin.click();       // Simula el clic en el botón de "Ingresar"
+        }
+    });
+});
+
 // --- EVENTO DE LOGIN ---
 btnLogin.addEventListener('click', async () => {
     const usuario = document.getElementById('loginUser').value.trim();
