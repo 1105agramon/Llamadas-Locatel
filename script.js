@@ -145,7 +145,7 @@ function actualizarGuiones() {
 <span class="text-read">¿Hay alguna otra duda o pregunta en la que le pueda apoyar el día de hoy?</span><br><br>
 
 <span class="text-action">(Si dice que no)</span><br>
-<span class="text-read">Perfecto, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió ${nombreOperador}, ${tituloOperador} de Locatel. Que tenga una excelente tarde/noche.</span>`;
+<span class="text-read">Perfecto, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió ${nombreOperador}, ${tituloOperador} de Locatel. Que pase ${saludoCompleto} , Hasta luego.</span>`;
     } else {
         tituloFinal = "SIN CUENTA LLAVE";
         scriptFinal = `
