@@ -175,7 +175,7 @@ A partir de este momento, usted ya puede ingresar nuevamente a la página web y 
 <span class="text-read">¿Hay alguna otra duda o pregunta en la que le pueda apoyar el día de hoy?</span><br><br>
 
 <span class="text-action">(Si responde que no)</span><br>
-<span class="text-read">Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió ${nombreOperador}, ${tituloOperador} de Locatel. Que tenga una excelente tarde/noche.</span>`;
+<span class="text-read">Perfecto. Siendo así, le agradezco mucho que se haya comunicado con nosotros. Le recuerdo que le atendió ${nombreOperador}, ${tituloOperador} de Locatel. Que pase ${saludoCompleto} , Hasta luego.</span>`;
     }
 
     const tEl = document.getElementById('scriptTitulo');
